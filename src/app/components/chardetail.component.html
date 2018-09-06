@@ -1,0 +1,11 @@
+<mat-card (load)="getDetail(charId)">
+    Character Detail
+      <mat-card color="primary">Luke Skywalker</mat-card>
+
+      <mat-card color="primary" *ngFor="let i of this.result.results">
+          <!-- <button mat-button [routerLink]="['/spaceship']">HERE {{this.result.results[1].name}}</button> -->
+          <!-- <button mat-button [routerLink]="['/chardetail', 2]">Height:  {{this.result.results[2].height}}</button> -->
+          <button mat-button [routerLink]="['/chardetail', 2]">Height:  {{this.result.results[2].height}}</button>
+
+        </mat-card>
+</mat-card>

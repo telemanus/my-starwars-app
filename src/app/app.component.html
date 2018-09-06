@@ -1,0 +1,30 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!--
+<mat-toolbar color="accent">
+  Star Wars Forever <mat-icon>Home</mat-icon>
+-->
+<mat-toolbar color="accent">
+<button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [routerLink]="['/home']">
+      <mat-icon svgIcon="home">Home</mat-icon>
+      <span>Home</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon svgIcon="character"  [routerLink]="['/character']">Character</mat-icon>
+      <span>Character</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon svgIcon="spaceship"  [routerLink]="['/spaceship']">Space Ship</mat-icon>
+      <span>Space Ship</span>
+    </button>
+  </mat-menu>
+Star Wars Forever
+</mat-toolbar>
+
+<mat-card>
+  <router-outlet>
+  </router-outlet>
+</mat-card>

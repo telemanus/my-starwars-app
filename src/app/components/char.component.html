@@ -1,0 +1,15 @@
+<mat-card>
+    Characters
+      <mat-card color="primary">
+        <button mat-button [routerLink]="['/character']">Luke Skywalker</button>
+      </mat-card>
+      <mat-card color="primary">
+        <button mat-button [routerLink]="['/spaceship']">Leia Organa</button>
+      </mat-card>
+      <mat-card color="primary" *ngFor="let i of this.result.results">
+          <!-- <button mat-button [routerLink]="['/spaceship']">HERE {{this.result.results[1].name}}</button> -->
+          <!-- <button mat-button [routerLink]="['/chardetail', 2]"> {{i.name}}</button> -->
+          <button mat-button  [routerLink]="['/chardetail/:n']"> {{i.name}}</button>
+
+        </mat-card>
+</mat-card>
