@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-
+import {Router, ActivatedRoute, Params, ActivatedRouteSnapshot} from '@angular/router';
+import {Observable, of} from 'rxjs';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-chardetail',
@@ -10,28 +12,31 @@ import {HttpClient} from '@angular/common/http';
 export class ChardetailComponent implements OnInit {
 
   private result = {};
+  private activatedRoute = {}
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private route: ActivatedRoute, private httpClient: HttpClient) {}
 
   ngOnInit() {
+  
+    /*
+    this.route.params.pipe(
+    filter(params => params.CharId))
+    .subscribe(params => {
+      console.log("Hi Params!!!!>>>", params); 
+   });
+   */
+   // this.route.params.subscribe( params => console.log('params captured:',params) );
 
-    const categoryName = "people";
 
-      this.httpClient.get(`https://swapi.co/api/${categoryName}`)
-      .subscribe((data:any)=>{
-        console.log("data>>>", data);
-        this.result = data;
-        console.log("result>>>", this.result);
-    })
-  }
-  getDetail(charId: number) {
+   this.route.params.subscribe( params => {
+   this.httpClient.get(`https://swapi.co/api/people/${params.charId}`)
+   .subscribe((data:any)=>{
+     console.log("data>>>", data);
+     this.result = data;
+     console.log("result>>>", this.result);
+   })
 
-    this.httpClient.get(`https://swapi.co/api/people/2`)
-    .subscribe((data:any)=>{
-      console.log("data>>>", data);
-      this.result = data;
-      console.log("result>>>", this.result);
   })
-
 }
+  
 }
